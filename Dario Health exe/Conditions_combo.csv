@@ -1,0 +1,14 @@
+cc_id,conditions_combination
+cc_1,BG
+cc_2,BP
+cc_3,WM
+cc_4,MSK 
+cc_5,BH
+cc_6,BG + BP
+cc_7,BG + WM
+cc_17,BG + BP + MSK
+cc_18,BG + BP + BH
+cc_19,BP + WM + MSK
+cc_25,BG + WH + MSK + BH
+cc_26,BP + WM + MSK + BH
+cc_27,BG + BP + WM + MSK + BH

@@ -1,0 +1,69 @@
+Data Reporting and Analysis Exercise
+
+In this exercise you are given 2 data files:
+
+*allocations.csv* - Contains data about robots assignment to jobs. Job is a set of things that need to be done to complete a single customer's order. Meaning, a job can be small (e.g., 1 robot fetching 1 tote) or big (20 robots fetching 30 totes over many minutes). Each row in the data describes an event of a robot being allocated to a job (allocation_status == 'start'), or de-allocated from a job (allocation_status == 'end'). Each row contains robot_type which is equal to ground (ground robot, or GR for short) or lift (lift robot, LR) and indicates the robot type this row is describing. Each row contains the robot_id and job_id and an additional tote_id which is the ID of tote that is being fetched. Note that a single job usually contains multiple robots, but a single tote in a job is only handled by 1 ground robot and 1 lift robot (LR takes the tote from the shelves and puts it on the GR, which moves it around the floor to wherever it is needed). created is the timestamp at which this event occurred.
+
+*errors.csv* - contains the timestamp (created) and identifiers of robots that reported an error, along with the error name.
+
+Use your favorite data processing and analysis tools to answer the following questions:
+
+1. What is the distribution of number of GRs and number of LRs allocated to jobs? Meaning, for a job, how many GRs and LRs do we expect to find that were allocated to this job?
+1. What is the distribution of robot allocation duration (from allocation_status=start to allocation_status=end, in seconds) for GRs and LRs?
+1. Are there cases in which the same GR is used twice (or more) in the same job?
+1. What is the effect on robot allocation duration of having an error during the allocation?
+1. Can you create a meaningful visualization that would help understand the timeline of allocations of a single job?
+
+We ask that you present the answers during your next interview. No need for fancy slides, though - think about it as if you are presenting these as interim results in a status meeting to your manager and/or to the product manager that requested these analyses.
+
+
+My Questions:
+	#is there an overlamp timestamp between differnt jobs? overall \ same robot_id \ same Tote ? there is no overlap in job-robot-totoid level, there are some cases where the robot is allocated to a job then go to another and than comeback.
+	#is there a specif componnet\robot_id the work more than others? YES - genreally there are less LR robots so they have more allocations and allocated for shorter time.
+	#is there componnet\robot_id that have more errors more than other ? by hour interval
+	# errors names distribution - what errors occurs the most ? which ones have greater delay ?
+	#are there jobs that have only GR robot or only 1 LR ? -yes
+        *time patterns ?
+* there are start with out end ! but is there end without start? how many ?
+
+--new question after interview:
+	* Q2 sheet - why there is a peek () in the ground duration distribution ?
+	*--some times there is a restart for all of center without error indication - how to check those cases? check if there is a peek of new jobs created(in some time interval say one minute)
+
+Preparing the data:
+	*Upload CSV to SQL (round the created column to nearest second)
+	* Add datetime columns based on created columns 
+	* Removed duplicates --973 duplicated records
+	* Added End Time and filter out the End records
+	* Add "has an error" & "Errors count" columns based on the error report (if the error created is between the start and end time of an allocation).
+	***Data notes:
+		*There are 752 errors (~65%) with no corresponding allocation (between start and end date).
+		*I found 350 cases (~0.8%) where there is a 'start'  with no 'end' allocation 
+		when I tried to find if there are any corresponding errors in the error log (+ 300seconds from start) , I found only 6 errors.
+
+My Notes:
+	# possiable reasons for start with no end:
+		*Errors stopping the job \ Manual cancelation of the job ? --Missing status cancel\failed ?
+		* time window data - the sample is filtered the records with end status.
+		*new order was recived before the GR robot put back the TOTE container , so there was no end where is spoosed to be ?
+		* the same TOTE ID need to be used for other job- so there is no need to bring it down and therefore there is no start? (and zero use of lift? filtered out "end" status and "start with no end records")
+	# why there is no job id in the errors log ?
+
+	#Q1 - SQL + python graph #181(3%) of jobs do not have even one LR #50(0.8%) of jobs
+	#Q2 -duration - lift vs ground - ground is much longer than lift - distribution shows that usally the duration time of lift is under 100 seconds while ground is between ~400 and 1000 seconds
+	#Q3 -yes, SQL Query + Graph : x = job_id , values - distinct_count(robot_id),allocation(count) , filter - distinct_count(robot_id) > 1
+	#Q4 - check avg and median, seems similar - maybe because there is segmentaion we ignored (Tote for example ?)
+	#Q5 - power bi + Python lib
+
+**maybe the outliers in Lift robots are related to errors in a job (find by TOTE) - error for GR ?
+
+
+
+dax: 
+aaa = 
+  VAR __job = SELECTCOLUMNS(allocations,[job_id])
+  
+  return
+  MINX(
+    FILTER('allocations', allocations[job_id] = [job_id]), MIN(allocations[created])
+  )
