@@ -109,7 +109,7 @@ table Fact_Allocations
 			RETURN
 			    CALCULATE(
 			        [Allocation Days],
-			        DATESINPERIOD(VDim_Dates[date], EndDate, -[Compared Days] + 1, DAY)
+			        DATESINPERIOD(VDim_Dates[date], EndDate, -[Compared Days], DAY)
 			    )
 		formatString: 0
 		displayFolder: Last X Days
@@ -120,7 +120,7 @@ table Fact_Allocations
 			RETURN
 			    CALCULATE(
 			        [Allocations Daily AVG],
-			        DATESINPERIOD(VDim_Dates[date], EndDate, -[Compared Days] + 1, DAY)
+			        DATESINPERIOD(VDim_Dates[date], EndDate, -[Compared Days], DAY)
 			    )
 		displayFolder: Last X Days
 		lineageTag: c1734422-13f4-43dd-8f7d-99a4f8d999ea
@@ -130,7 +130,7 @@ table Fact_Allocations
 			RETURN
 			    CALCULATE(
 			        [Job Count Daily AVG],
-			        DATESINPERIOD(VDim_Dates[date], EndDate, -[Compared Days] + 1, DAY)
+			        DATESINPERIOD(VDim_Dates[date], EndDate, -[Compared Days], DAY)
 			    )
 		formatString: 0.0
 		displayFolder: Last X Days
@@ -141,7 +141,7 @@ table Fact_Allocations
 			RETURN
 			    CALCULATE(
 			        [Error Days],
-			        DATESINPERIOD(VDim_Dates[date], EndDate, -[Compared Days] + 1, DAY)
+			        DATESINPERIOD(VDim_Dates[date], EndDate, -[Compared Days], DAY)
 			    )
 		formatString: 0
 		displayFolder: Last X Days
@@ -152,7 +152,7 @@ table Fact_Allocations
 			RETURN
 			    CALCULATE(
 			        [Errors Daily AVG],
-			        DATESINPERIOD(VDim_Dates[date], EndDate, -[Compared Days] + 1, DAY)
+			        DATESINPERIOD(VDim_Dates[date], EndDate, -[Compared Days], DAY)
 			    )
 		formatString: 0.0
 		displayFolder: Last X Days
@@ -163,7 +163,7 @@ table Fact_Allocations
 			RETURN
 			    CALCULATE(
 			        [AVG Allocations Duration],
-			        DATESINPERIOD(VDim_Dates[date], EndDate, -[Compared Days] + 1, DAY)
+			        DATESINPERIOD(VDim_Dates[date], EndDate, -[Compared Days], DAY)
 			    )
 		formatString: 0
 		displayFolder: Last X Days
