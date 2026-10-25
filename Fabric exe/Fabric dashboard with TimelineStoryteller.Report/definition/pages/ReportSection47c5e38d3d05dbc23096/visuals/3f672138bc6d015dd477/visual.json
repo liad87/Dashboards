@@ -1,0 +1,282 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "3f672138bc6d015dd477",
+  "position": {
+    "x": 0,
+    "y": 385.45454545454544,
+    "z": 2000,
+    "height": 308.18181818181813,
+    "width": 640
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Allocations"
+                    }
+                  },
+                  "Property": "date_time"
+                }
+              },
+              "queryRef": "Fact_Allocations.date_time",
+              "nativeQueryRef": "date_time"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Jobs"
+                    }
+                  },
+                  "Property": "job_id"
+                }
+              },
+              "queryRef": "Dim_Jobs.job_id",
+              "nativeQueryRef": "job_id1"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Allocations"
+                    }
+                  },
+                  "Property": "robot_id"
+                }
+              },
+              "queryRef": "Fact_Allocations.robot_id",
+              "nativeQueryRef": "robot_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Allocations"
+                    }
+                  },
+                  "Property": "tote_id"
+                }
+              },
+              "queryRef": "Fact_Allocations.tote_id",
+              "nativeQueryRef": "tote_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Allocations"
+                    }
+                  },
+                  "Property": "duration_sec"
+                }
+              },
+              "queryRef": "Fact_Allocations.duration_sec",
+              "nativeQueryRef": "duration_sec"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Allocations"
+                    }
+                  },
+                  "Property": "has_an_error"
+                }
+              },
+              "queryRef": "Fact_Allocations.has_an_error",
+              "nativeQueryRef": "has_an_error"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_Allocations"
+                  }
+                },
+                "Property": "date_time"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "76.92514985208825D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fact_Allocations.has_an_error"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "73.67120096379107D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fact_Allocations.duration_sec"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filter4c32c5b358b75aa26db7",
+        "ordinal": 0,
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_Allocations"
+              }
+            },
+            "Property": "Allocations"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "Filterbed750b564ed04650410",
+        "ordinal": 1,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_Allocations"
+              }
+            },
+            "Property": "date_time"
+          }
+        },
+        "type": "TopN"
+      },
+      {
+        "name": "Filterfed8014e1d7ac0e4ec8d",
+        "ordinal": 2,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_Allocations"
+              }
+            },
+            "Property": "job_id"
+          }
+        },
+        "type": "TopN",
+        "howCreated": "User"
+      },
+      {
+        "name": "Filterd593d138c7063ab0e4c1",
+        "ordinal": 3,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_Allocations"
+              }
+            },
+            "Property": "robot_id"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "Filter79bdb90a9d0b352ad023",
+        "ordinal": 4,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_Allocations"
+              }
+            },
+            "Property": "duration_sec"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "Filter21fef7b45da5e4770d74",
+        "ordinal": 5,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_Allocations"
+              }
+            },
+            "Property": "has_an_error"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "Filterab085501ae945a7d7002",
+        "ordinal": 6,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact_Allocations"
+              }
+            },
+            "Property": "tote_id"
+          }
+        },
+        "type": "Advanced"
+      }
+    ],
+    "filterSortOrder": "Custom"
+  }
+}

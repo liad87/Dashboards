@@ -1,0 +1,69 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "1e5427b51305d8e306d1",
+  "position": {
+    "x": 1089.5334174022698,
+    "y": 138.00756620428751,
+    "z": 8000,
+    "height": 88.978562421185359,
+    "width": 181.58890290037829
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Allocations"
+                    }
+                  },
+                  "Property": "Total Job Errors"
+                }
+              },
+              "queryRef": "Fact_Allocations.Total Job Errors",
+              "nativeQueryRef": "Total Job Errors"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_Allocations"
+                  }
+                },
+                "Property": "Total Job Errors"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

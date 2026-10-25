@@ -1,0 +1,166 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "bb74d0704c0741b2c93c",
+  "position": {
+    "x": 0,
+    "y": 128.92812105926859,
+    "z": 0,
+    "height": 591.07187894073138,
+    "width": 692.7616645649432
+  },
+  "visual": {
+    "visualType": "TimelineStoryteller1652434605730",
+    "query": {
+      "queryState": {
+        "start_date": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Allocations"
+                    }
+                  },
+                  "Property": "created"
+                }
+              },
+              "queryRef": "Fact_Allocations.created",
+              "nativeQueryRef": "created"
+            }
+          ]
+        },
+        "end_date": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Allocations"
+                    }
+                  },
+                  "Property": "end_time"
+                }
+              },
+              "queryRef": "Fact_Allocations.end_time",
+              "nativeQueryRef": "end_time"
+            }
+          ]
+        },
+        "facet": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Allocations"
+                    }
+                  },
+                  "Property": "robot_id"
+                }
+              },
+              "queryRef": "Fact_Allocations.robot_id",
+              "nativeQueryRef": "robot_id"
+            }
+          ]
+        },
+        "category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Allocations"
+                    }
+                  },
+                  "Property": "tote_id"
+                }
+              },
+              "queryRef": "Fact_Allocations.tote_id",
+              "nativeQueryRef": "tote_id"
+            }
+          ]
+        },
+        "content_text": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Allocations"
+                    }
+                  },
+                  "Property": "duration_sec"
+                }
+              },
+              "queryRef": "Fact_Allocations.duration_sec",
+              "nativeQueryRef": "duration_sec"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "display": [
+        {
+          "properties": {
+            "uiScale": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.2
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

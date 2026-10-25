@@ -1,0 +1,121 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "664c2cb09e246d203d73",
+  "position": {
+    "x": 310.51702395964691,
+    "y": 349.55863808322823,
+    "z": 4000,
+    "height": 359.546027742749,
+    "width": 266.0277427490542
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Errors"
+                    }
+                  },
+                  "Property": "component_id"
+                }
+              },
+              "queryRef": "Fact_Errors.component_id",
+              "nativeQueryRef": "component_id",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Errors"
+                    }
+                  },
+                  "Property": "Errors Daily AVG"
+                }
+              },
+              "queryRef": "Fact_Errors.Errors Daily AVG",
+              "nativeQueryRef": "Errors Daily AVG"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Errors"
+                    }
+                  },
+                  "Property": "Error Days"
+                }
+              },
+              "queryRef": "Fact_Errors.Error Days",
+              "nativeQueryRef": "Error Days"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_Errors"
+                  }
+                },
+                "Property": "Errors Daily AVG"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "''"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

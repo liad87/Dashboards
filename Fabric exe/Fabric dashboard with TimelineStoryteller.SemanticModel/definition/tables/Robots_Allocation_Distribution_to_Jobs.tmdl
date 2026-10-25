@@ -1,0 +1,70 @@
+table Robots_Allocation_Distribution_to_Jobs
+	lineageTag: 6b9ace0c-904a-4c9a-9a10-35f2b4e913be
+
+	measure 'AVG GR Robots Per Job' = DIVIDE( SUM(Robots_Allocation_Distribution_to_Jobs[__GR robots * Jobs] ) ,SUM(Robots_Allocation_Distribution_to_Jobs[Jobs_count] ))
+		lineageTag: 4da552e4-13de-494c-8f7f-a465202016cc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AVG LR Robots Per Job' = DIVIDE( SUM(Robots_Allocation_Distribution_to_Jobs[__LR robots * Jobs]) , SUM(Robots_Allocation_Distribution_to_Jobs[Jobs_count] ) )
+		lineageTag: d2723e48-c3f6-4424-a55c-2149a8d988a6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column distinct_ground_robots_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 87fefb8c-0baf-41e2-a6fe-be39ae66c5e1
+		summarizeBy: none
+		sourceColumn: distinct_ground_robots_count
+
+		annotation SummarizationSetBy = User
+
+	column distinct_lift_robots_count
+		dataType: int64
+		formatString: 0
+		lineageTag: c3867c31-7551-4419-a0b2-785daf70cb67
+		summarizeBy: none
+		sourceColumn: distinct_lift_robots_count
+
+		annotation SummarizationSetBy = User
+
+	column Jobs_count
+		dataType: int64
+		formatString: 0
+		lineageTag: fbf8329e-3aa0-46f9-bbfb-fad3062afe04
+		summarizeBy: sum
+		sourceColumn: Jobs_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column '__GR robots * Jobs' = Robots_Allocation_Distribution_to_Jobs[distinct_ground_robots_count] * Robots_Allocation_Distribution_to_Jobs[Jobs_count]
+		isHidden
+		formatString: 0
+		lineageTag: 47455938-8d84-4df5-b850-3edd9f8d8d46
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column '__LR robots * Jobs' = Robots_Allocation_Distribution_to_Jobs[distinct_lift_robots_count] * Robots_Allocation_Distribution_to_Jobs[Jobs_count]
+		isHidden
+		formatString: 0
+		lineageTag: 6c0e22bc-decc-417f-a7b3-45c630642f22
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Robots_Allocation_Distribution_to_Jobs-67021fac-a840-4b7f-90b2-a1c13de52662 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("."),
+				    Fabric_Assignment = Source{[Name="Fabric_Assignment"]}[Data],
+				    dbo_Robots_Allocation_Distribution_to_Jobs = Fabric_Assignment{[Schema="dbo",Item="Robots_Allocation_Distribution_to_Jobs"]}[Data]
+				in
+				    dbo_Robots_Allocation_Distribution_to_Jobs
+

@@ -1,0 +1,286 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "0530803f0478a66c3369",
+  "position": {
+    "x": 742.69861286254718,
+    "y": 104.41361916771751,
+    "z": 3000,
+    "height": 138.00756620428751,
+    "width": 537.50315258511978
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Allocations"
+                    }
+                  },
+                  "Property": "robot_type"
+                }
+              },
+              "queryRef": "Fact_Allocations.robot_type",
+              "nativeQueryRef": "robot_type",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Allocations"
+                    }
+                  },
+                  "Property": "AVG Allocations Duration"
+                }
+              },
+              "queryRef": "Fact_Allocations.AVG Allocations Duration",
+              "nativeQueryRef": "AVG Allocations Duration"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Allocations"
+                    }
+                  },
+                  "Property": "Median Allocation Duration"
+                }
+              },
+              "queryRef": "Fact_Allocations.Median Duration Sec",
+              "nativeQueryRef": "Median Duration Sec"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Allocations"
+                    }
+                  },
+                  "Property": "Allocations"
+                }
+              },
+              "queryRef": "Fact_Allocations.Allocations",
+              "nativeQueryRef": "Allocations"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Allocations"
+                    }
+                  },
+                  "Property": "Robots Count"
+                }
+              },
+              "queryRef": "Fact_Allocations.Robots Count",
+              "nativeQueryRef": "Robots Count"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Allocations"
+                    }
+                  },
+                  "Property": "AVG Robot Allocation"
+                }
+              },
+              "queryRef": "Fact_Allocations.AVG Robot Allocation",
+              "nativeQueryRef": "AVG Robot Allocation"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Allocations"
+                    }
+                  },
+                  "Property": "AVG TOTE Allocations"
+                }
+              },
+              "queryRef": "Fact_Allocations.AVG TOTE Allocations",
+              "nativeQueryRef": "AVG TOTE Allocations"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_Allocations"
+                  }
+                },
+                "Property": "robot_type"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "69.13062279479915D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fact_Allocations.Median Duration Sec"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "87.88888024384627D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fact_Allocations.AVG Allocations Duration"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "57.74372597048653D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fact_Allocations.Robots Count"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "63.90794515342474D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fact_Allocations.Allocations"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "60.2275193339047D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fact_Allocations.AVG Robot Allocation"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "61.152625237118265D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fact_Allocations.robot_type"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "62.04150776547274D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fact_Allocations.AVG TOTE Allocations"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "titleAlignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

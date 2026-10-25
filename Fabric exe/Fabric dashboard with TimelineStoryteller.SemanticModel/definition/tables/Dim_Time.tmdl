@@ -1,0 +1,55 @@
+table Dim_Time
+	lineageTag: b604b72a-2b6a-4154-af71-330a69f3f5f1
+
+	column Time
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 09a2b6ec-e6a2-4f6e-9de1-692388e8acb0
+		summarizeBy: none
+		sourceColumn: Time
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column Hour
+		dataType: int64
+		formatString: 0
+		lineageTag: ad25d531-cae1-4323-88d3-6beea5947215
+		summarizeBy: none
+		sourceColumn: Hour
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column Minute
+		dataType: int64
+		formatString: 0
+		lineageTag: 684f12f1-27fc-478c-850c-406c4be9cc60
+		summarizeBy: none
+		sourceColumn: Minute
+
+		annotation SummarizationSetBy = User
+
+	column SECOND
+		dataType: int64
+		formatString: 0
+		lineageTag: d85a8d3c-dc93-4f03-881c-b3879f9b065c
+		summarizeBy: none
+		sourceColumn: SECOND
+
+		annotation SummarizationSetBy = User
+
+	partition Dim_Time-47588893-0c35-4b35-9558-357cc728e608 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("."),
+				    local = Source{[Name="local"]}[Data],
+				    dbo_Dim_Time = local{[Schema="dbo",Item="Dim_Time"]}[Data]
+				in
+				    dbo_Dim_Time
+

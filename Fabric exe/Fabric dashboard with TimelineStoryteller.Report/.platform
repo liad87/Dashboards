@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Fabric dashboard with TimelineStoryteller"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e2b61cac-d156-4c8d-a5c5-3c95fcd16092"
+  }
+}

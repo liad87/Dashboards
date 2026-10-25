@@ -1,0 +1,73 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "47a36b1fc8d3ac0ea094",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 9000,
+    "height": 110.76923076923076,
+    "width": 601.967213114754
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Question 5 - Can you create a meaningful visualization that would help understand the timeline of allocations of a single job?",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "In the Timeline vizual below every row represnt robot id, every color represnet TOTE ID."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The number showed when overing a certain bar represnt the duration in seconds ."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "**Press on the 2nd button on the \"Layout\" (called \"FACETED\") for a better view **",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

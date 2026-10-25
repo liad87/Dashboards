@@ -1,0 +1,20 @@
+relationship b3c59bd0-0f5e-4e69-9f1e-5c95ab0583e0
+	fromColumn: Fact_Allocations.allocation_date
+	toColumn: VDim_Dates.date
+
+relationship 47a92d81-85e8-4406-981e-e615a956d2ea
+	fromColumn: Fact_Errors.error_date
+	toColumn: VDim_Dates.date
+
+relationship c4e995e3-70dc-4bd8-9e59-3636c1b1b8b7
+	fromColumn: Fact_Allocations.job_id
+	toColumn: Dim_Jobs.job_id
+
+relationship 05dc10ca-df61-4b00-a21a-4185be3fc781
+	fromColumn: Fact_Errors.'Error Time'
+	toColumn: Dim_Time.Time
+
+relationship 56a61a68-ed7a-442e-8191-3c297209c4ee
+	fromColumn: Fact_Allocations.'Allocation Time'
+	toColumn: Dim_Time.Time
+

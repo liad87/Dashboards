@@ -1,0 +1,100 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "Fact_Allocations",
+          "nodeLineageTag": "5d864d98-5da7-4f03-afca-b153733fb533",
+          "size": {
+            "height": 338,
+            "width": 267
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 800.09999999999991,
+            "y": 0
+          },
+          "nodeIndex": "Fact_Errors",
+          "nodeLineageTag": "b2431c59-9b12-449e-a1a5-3835e7ba9b80",
+          "size": {
+            "height": 366,
+            "width": 277
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 384.40000000000009,
+            "y": 0
+          },
+          "nodeIndex": "VDim_Dates",
+          "nodeLineageTag": "1967a127-2b7a-4a0a-a5c9-2e037cdd560c",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 1132.5,
+            "y": 98
+          },
+          "nodeIndex": "Robots_Allocation_Distribution_to_Jobs",
+          "nodeLineageTag": "6b9ace0c-904a-4c9a-9a10-35f2b4e913be",
+          "size": {
+            "height": 260,
+            "width": 349
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 499
+          },
+          "nodeIndex": "Dim_Jobs",
+          "nodeLineageTag": "0b5f09b6-2db3-4233-8c10-4cc578b8e231",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 532.7,
+            "y": 373
+          },
+          "nodeIndex": "Dim_Time",
+          "nodeLineageTag": "b604b72a-2b6a-4154-af71-330a69f3f5f1",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 6
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

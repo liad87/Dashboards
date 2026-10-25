@@ -1,0 +1,122 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "880b12d1d4507a871a02",
+  "position": {
+    "x": 23.606557377049178,
+    "y": 104.41361916771751,
+    "z": 7000,
+    "height": 110.76923076923076,
+    "width": 710.920554854981
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Q2 -  What is the distribution of robot allocation duration for GRs and LRs?  * For Q4 -scroll down",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "*Press on the \"robot type\" filter for better view of the distribution",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "textDecoration": "underline"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "*Lift have more narrow distribution and much shorter duration than GR  - 39Seconds VS 593"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "*Ground - 85% of allocations are between 200 - 1000 seconds , Lift - 97% of allocations are below 60 seconds."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "*Lift Robots have more allocation(Per Robot Id) with shorter work time"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "*LR00002100 is the most freq robot used"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Q4 - "
+                  },
+                  {
+                    "value": " What is the effect on robot allocation duration of having an error during the allocation?",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "There is not enough Alloctions with error for Lift robots to detrmine (only 8 Allocations)  "
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Regarding GR Robots -According to the P value above (0.21%) we can say that Avg duration of allocations with Errors is longer than Regular Allocation. 811 Seconds VS 592 Seconds"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

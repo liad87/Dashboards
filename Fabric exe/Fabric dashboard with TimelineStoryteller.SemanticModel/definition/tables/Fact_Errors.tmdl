@@ -1,0 +1,172 @@
+table Fact_Errors
+	lineageTag: b2431c59-9b12-449e-a1a5-3835e7ba9b80
+
+	measure 'Total Errors' = COUNT(Fact_Errors[error_created])
+		formatString: 0
+		lineageTag: 45fe1eb3-560e-4254-9000-6f995acce5fc
+
+	measure 'AVG Duration Error' = DIVIDE(SUM(Fact_Errors[duration_seconds]) ,count(Fact_Errors[duration_seconds]))
+		lineageTag: c5506a22-eff9-49b2-a0fd-9edeb251e4dd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Error Days' = CALCULATE(COUNT(VDim_Dates[date]) ,Fact_Errors)
+		formatString: 0
+		lineageTag: 6305e539-d334-4da0-b976-b027d1cdd66e
+
+	measure 'Errors Daily AVG' = DIVIDE([Total Errors] ,[Error Days])
+		formatString: 0.0
+		lineageTag: c10e75ba-3beb-48ab-b7d7-43c6713610e6
+
+	column component_id
+		dataType: string
+		lineageTag: 17e59440-836b-4210-9372-a2361e3a3f14
+		summarizeBy: none
+		sourceColumn: component_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column component_type
+		dataType: string
+		lineageTag: fa964435-f16f-48e9-ae33-e75707b0c2fc
+		summarizeBy: none
+		sourceColumn: component_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column error_name
+		dataType: string
+		lineageTag: f3e2045d-e577-44bd-a8c3-ecf11711c50b
+		summarizeBy: none
+		sourceColumn: error_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column error_created
+		dataType: int64
+		formatString: 0
+		lineageTag: 105ed9d7-c333-4490-886b-7466d636cba1
+		summarizeBy: none
+		sourceColumn: error_created
+
+		annotation SummarizationSetBy = User
+
+	column has_related_job_id
+		dataType: int64
+		formatString: 0
+		lineageTag: faf10c52-53bd-4aa2-886d-fd3106686c7f
+		summarizeBy: none
+		sourceColumn: has_related_job_id
+
+		annotation SummarizationSetBy = User
+
+	column error_date_time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: dbeb210c-ebb2-4443-a6b8-1ac137978ab3
+		summarizeBy: none
+		sourceColumn: error_date_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column error_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 9d21ab88-c959-432a-ae56-877c1be8fe3c
+		summarizeBy: none
+		sourceColumn: error_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column job_created
+		dataType: int64
+		formatString: 0
+		lineageTag: 7e4e290b-537d-4eb7-9e58-01a3095f8b5b
+		summarizeBy: none
+		sourceColumn: job_created
+
+		annotation SummarizationSetBy = User
+
+	column job_id
+		dataType: string
+		lineageTag: 39a9c7ae-65ea-4aa3-ae64-759300e363e4
+		summarizeBy: none
+		sourceColumn: job_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column tote_id
+		dataType: string
+		lineageTag: a3985a78-e133-48eb-a500-1c0f40dfaa3c
+		summarizeBy: none
+		sourceColumn: tote_id
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column robot_type
+		dataType: string
+		lineageTag: ab91495e-0593-4a7d-81ed-b1788e7b63b3
+		summarizeBy: none
+		sourceColumn: robot_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column allocation_date_time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: afd626df-8025-4389-9a76-22826ac317fc
+		summarizeBy: none
+		sourceColumn: allocation_date_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column allocation_end_time
+		dataType: int64
+		formatString: 0
+		lineageTag: 5ed9e687-3a4c-46ea-a3c3-78340d13c10c
+		summarizeBy: none
+		sourceColumn: allocation_end_time
+
+		annotation SummarizationSetBy = User
+
+	column duration_seconds
+		dataType: int64
+		formatString: 0
+		lineageTag: e3f939fe-918a-4ccc-8097-1cb6b3bece6a
+		summarizeBy: none
+		sourceColumn: duration_seconds
+
+		annotation SummarizationSetBy = User
+
+	column 'Error Time' = TIME(HOUR(Fact_Errors[error_date_time]) ,MINUTE(Fact_Errors[error_date_time]),SECOND(Fact_Errors[error_date_time]))
+		formatString: Long Time
+		lineageTag: 18f963e6-8469-4b69-86c2-8703db4af3d4
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column 'Error Rounded Hour' = Hour (Fact_Errors[error_date_time] + 1/24/2)
+		formatString: 0
+		lineageTag: d4bfac9f-3293-4357-b4d5-c3d3cb7bf8fb
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Errors-cb4928ec-7724-414e-b28f-f96accd54b37 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("."),
+				    Fabric_Assignment = Source{[Name="Fabric_Assignment"]}[Data],
+				    dbo_Fact_Errors = Fabric_Assignment{[Schema="dbo",Item="Fact_Errors"]}[Data]
+				in
+				    dbo_Fact_Errors
+

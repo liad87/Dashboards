@@ -1,0 +1,264 @@
+table Fact_Allocations
+	lineageTag: 5d864d98-5da7-4f03-afca-b153733fb533
+
+	measure Allocations = COUNT(Fact_Allocations[created])
+		formatString: #,0
+		lineageTag: 8c178536-f764-4741-8e1f-a7aa19265256
+
+	measure 'Robots Count' = DISTINCTCOUNT(Fact_Allocations[robot_id])
+		formatString: #,0
+		lineageTag: ce18e74f-6894-4e21-ad80-b2097a92c869
+
+	measure 'Total Duration Sec' = SUM(Fact_Allocations[duration_sec])
+		formatString: #,0
+		lineageTag: 5c1d4540-0489-47c9-9f69-5ab00dd0fd5d
+
+	measure 'AVG Allocations Duration' = ```
+			DIVIDE([Total Duration Sec] , Fact_Allocations[Allocations] ) 
+			```
+		formatString: 0
+		lineageTag: 7b490a1b-a65c-460e-97ce-dd15f4a391e4
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Jobs Count' = CALCULATE(COUNT(Dim_Jobs[job_id] ) ,Fact_Allocations)
+		formatString: 0
+		lineageTag: 04767d6a-a9e6-4864-b310-faa268a5e4a5
+
+	measure 'AVG Job Duration' = ```
+			DIVIDE(  CALCULATE(SUM(Dim_Jobs[Job_Duration]),Fact_Allocations) , [Jobs Count]) 
+			```
+		formatString: 0.0
+		lineageTag: 3ef09ac2-c1c6-4757-99af-c718b0d6db41
+
+	measure 'Total Job Errors' = sum(Fact_Allocations[errors_count])
+		formatString: 0
+		lineageTag: b48c4f2a-3e80-44bf-895c-facb18f8e8d6
+
+	measure 'Median Allocation Duration' = Median(Fact_Allocations[duration_sec])
+		lineageTag: 06e310e6-70ad-4006-a752-e2f00614eb26
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Q3_Total = DISTINCTCOUNT(Fact_Allocations[__Unique_Robot_Job_ID])
+		formatString: #,0
+		lineageTag: c6730037-d185-40b6-a01b-32196a9aecf6
+
+	measure Duration_T_statistic =
+			
+			VAR AVG_Dur_Reg = CALCULATE([AVG Allocations Duration] ,FILTER(Fact_Allocations , Fact_Allocations[has_an_error] = 0 ) )
+			VAR AVG_Dur_Err = CALCULATE([AVG Allocations Duration] ,FILTER(Fact_Allocations ,  Fact_Allocations[has_an_error] = 1 ) )
+			VAR Reg_std = CALCULATE(STDEV.P(Fact_Allocations[duration_sec]) ,FILTER(Fact_Allocations , Fact_Allocations[has_an_error] = 0) )
+			VAR Err_std = CALCULATE(STDEV.P(Fact_Allocations[duration_sec])  ,FILTER(Fact_Allocations ,Fact_Allocations[has_an_error] = 1 ) )
+			Var N_Reg = CALCULATE(COUNT(Fact_Allocations[duration_sec]) , FILTER(Fact_Allocations , Fact_Allocations[has_an_error] = 0 ) )
+			Var N_Err = CALCULATE(COUNT(Fact_Allocations[duration_sec]) ,FILTER(Fact_Allocations , Fact_Allocations[has_an_error] = 1  ) )
+			Return
+			(AVG_Dur_Err - AVG_Dur_Reg)/SQRT( (Reg_std^2/N_Reg)+ (Err_std^2/N_Err) )
+		lineageTag: f0f2f30e-456c-407d-9129-dff2f7eee96f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'P_value Error Duration Test' =
+			
+			1 -  NORM.DIST (ABS ( [Duration_T_statistic]),0, 1, TRUE )
+		formatString: 0.0000
+		isHidden
+		lineageTag: a6d25d21-8b93-4f52-9274-ff1caae66959
+
+		changedProperty = IsHidden
+
+	measure 'Sig Err Dur Test' = ```
+			
+			1 -  T.DIST( ABS([Duration_T_statistic]),SUM(Fact_Allocations[has_an_error]) -1  ,TRUE ) 
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f32de9e1-d49c-4d72-9ba4-2720992e6ca9
+
+	measure 'AVG Robot Allocation' = ```
+			DIVIDE(Fact_Allocations[Allocations] , [Robots Count]) 
+			```
+		formatString: 0.0
+		lineageTag: e35bfba2-01f7-47d1-881e-3be219f699df
+
+	measure 'AVG TOTE Allocations' = DIVIDE(Fact_Allocations[Allocations], DISTINCTCOUNT(Fact_Allocations[tote_id]) )
+		lineageTag: af8e1118-a932-442b-9ca6-60726fd3dc26
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Allocation Days' = CALCULATE(COUNT(VDim_Dates[date]) ,Fact_Allocations)
+		formatString: 0
+		lineageTag: 1592833c-a868-4a2e-adc8-4b3d0159172f
+
+	measure 'Allocations Daily AVG' = DIVIDE(Fact_Allocations[Allocations] , [Allocation Days])
+		lineageTag: 73cb2881-6650-4c16-a61c-36f505747585
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Job Count Daily AVG' = DIVIDE([Jobs Count] , [Allocation Days])
+		formatString: 0.0
+		lineageTag: 724ac511-e43a-4253-a84b-d75054aef077
+
+	column created
+		dataType: int64
+		formatString: 0
+		lineageTag: 0152e32e-7e24-4538-a65f-1c32e91c4a20
+		summarizeBy: none
+		sourceColumn: created
+
+		annotation SummarizationSetBy = User
+
+	column job_id
+		dataType: string
+		lineageTag: 899d6597-9bc9-4ed8-ae60-78eeaa81954b
+		summarizeBy: none
+		sourceColumn: job_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column robot_id
+		dataType: string
+		lineageTag: 48bc14a4-4d17-4500-9f26-53e7e515e747
+		summarizeBy: none
+		sourceColumn: robot_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column tote_id
+		dataType: string
+		lineageTag: 62cde959-039e-4c21-a7b7-a0a9072803ae
+		summarizeBy: none
+		sourceColumn: tote_id
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column robot_type
+		dataType: string
+		lineageTag: b7bddc95-5055-48ca-b1a2-355d5cecdaa6
+		summarizeBy: none
+		sourceColumn: robot_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column allocation_status
+		dataType: string
+		isHidden
+		lineageTag: c422256c-fd3a-4026-8535-2558c9444f2f
+		summarizeBy: none
+		sourceColumn: allocation_status
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_time
+		dataType: dateTime
+		formatString: yyyy-mm-dd hh:nn:ss
+		lineageTag: 03963c8f-65b0-42fd-9adc-7af122e612e4
+		summarizeBy: none
+		sourceColumn: date_time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column end_time
+		dataType: int64
+		formatString: 0
+		lineageTag: 520553f9-2f00-4e7f-ab60-e27397ff2a50
+		summarizeBy: none
+		sourceColumn: end_time
+
+		annotation SummarizationSetBy = User
+
+	column allocation_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 9bc7f605-28fb-48ac-a4f0-02ff637ae966
+		summarizeBy: none
+		sourceColumn: allocation_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column errors_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 55186344-8d0d-4f83-a68c-e3192c2a5e51
+		summarizeBy: none
+		sourceColumn: errors_count
+
+		annotation SummarizationSetBy = User
+
+	column has_an_error
+		dataType: int64
+		formatString: 0
+		lineageTag: 57fffda2-80ad-4ad2-99e3-75b00766e7a1
+		summarizeBy: none
+		sourceColumn: has_an_error
+
+		annotation SummarizationSetBy = User
+
+	column duration_sec
+		dataType: int64
+		formatString: 0
+		lineageTag: d3f75757-af13-47a3-ab4a-07dfc256883d
+		summarizeBy: none
+		sourceColumn: duration_sec
+
+		annotation SummarizationSetBy = User
+
+	column 'Allocation Time' = TIME(HOUR(Fact_Allocations[date_time]) ,MINUTE(Fact_Allocations[date_time]),SECOND(Fact_Allocations[date_time]))
+		formatString: Long Time
+		lineageTag: a722d851-d0e8-4c92-9b66-6fd0158ea59b
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column 'Allocation Hour' = Hour (Fact_Allocations[date_time])
+		formatString: 0
+		lineageTag: f26474c6-f0f1-405f-b388-0a9774832b59
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	column __Unique_Robot_Job_ID = CONCATENATE(Fact_Allocations[robot_id],Fact_Allocations[job_id])
+		isHidden
+		lineageTag: 0059ed6a-642b-4bde-b79c-bfae76eca633
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column duration_Group
+		dataType: string
+		lineageTag: 61c45351-0d69-49b3-91c3-15c4347818b6
+		summarizeBy: none
+		sourceColumn: duration_Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Allocation Minute' = MINUTE(Fact_Allocations[Allocation Time])
+		formatString: 0
+		lineageTag: 5d31ec3c-7d3d-44c2-8a38-e090bf20552f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	partition Fact_Allocations-f6d0cb3a-41e7-41e1-9c13-8bf439aa59a6 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("."),
+				    Fabric_Assignment = Source{[Name="Fabric_Assignment"]}[Data],
+				    dbo_Fact_Allocations = Fabric_Assignment{[Schema="dbo",Item="Fact_Allocations"]}[Data]
+				in
+				    dbo_Fact_Allocations
+

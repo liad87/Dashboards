@@ -1,0 +1,223 @@
+table VDim_Dates
+	lineageTag: 1967a127-2b7a-4a0a-a5c9-2e037cdd560c
+
+	column date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 1b78800c-6b98-430b-a0d8-37b190bbb3c9
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Day_Month
+		dataType: int64
+		formatString: 0
+		lineageTag: 1c3cff82-7a7d-4e9c-9a99-e9ab75a3eb17
+		summarizeBy: sum
+		sourceColumn: Day_Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayName
+		dataType: string
+		lineageTag: ff213028-2575-4fb4-acc4-f01320d7b669
+		summarizeBy: none
+		sourceColumn: DayName
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeek_Num
+		dataType: int64
+		formatString: 0
+		lineageTag: ffe756b5-d023-4342-941c-c43c351e4150
+		summarizeBy: sum
+		sourceColumn: DayOfWeek_Num
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeekInMonth
+		dataType: int64
+		formatString: 0
+		lineageTag: 87801d11-df4e-48f5-a11a-0b6332e6a0ee
+		summarizeBy: sum
+		sourceColumn: DayOfWeekInMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfYear
+		dataType: int64
+		formatString: 0
+		lineageTag: 57a77e4b-8c2d-4e4a-9224-d4003a3cb8b3
+		summarizeBy: sum
+		sourceColumn: DayOfYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsWeekend
+		dataType: int64
+		formatString: 0
+		lineageTag: 62118d49-26bd-40db-95f2-a814c982449e
+		summarizeBy: sum
+		sourceColumn: IsWeekend
+
+		annotation SummarizationSetBy = Automatic
+
+	column Week_Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 265cba0a-7441-4011-a25e-122ad2de503c
+		summarizeBy: sum
+		sourceColumn: Week_Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstOfWeek
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4ce1e0b0-cda4-4b73-be41-d3ff072b885a
+		summarizeBy: none
+		sourceColumn: FirstOfWeek
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column LastOfWeek
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 264fa538-d5b0-4609-a65a-f5eb273468d4
+		summarizeBy: none
+		sourceColumn: LastOfWeek
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column WeekOfMonth
+		dataType: int64
+		formatString: 0
+		lineageTag: 18003c46-bf66-473b-8d09-5dd1f2904a96
+		summarizeBy: sum
+		sourceColumn: WeekOfMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month_Num
+		dataType: int64
+		formatString: 0
+		lineageTag: 71d94561-c7fc-4505-b277-6b20f2314370
+		summarizeBy: sum
+		sourceColumn: Month_Num
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthName
+		dataType: string
+		lineageTag: d32a112e-d523-4d9d-ab0f-1181951903f5
+		summarizeBy: none
+		sourceColumn: MonthName
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstOfMonth
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 549d4206-01d4-410a-a513-5b5ad0b61403
+		summarizeBy: none
+		sourceColumn: FirstOfMonth
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column LastOfMonth
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1667c31f-80c8-459d-8dba-f5b4b207ad00
+		summarizeBy: none
+		sourceColumn: LastOfMonth
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column FirstOfNextMonth
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2b9e6933-c221-4c63-bf65-b81bc0dc5421
+		summarizeBy: none
+		sourceColumn: FirstOfNextMonth
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column LastOfNextMonth
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6fc0886d-2a0e-4667-a5d2-ba60f4d9b3b9
+		summarizeBy: none
+		sourceColumn: LastOfNextMonth
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Quarter
+		dataType: int64
+		formatString: 0
+		lineageTag: b2e4e0ea-23e6-442d-bb8d-5cd96f0cde40
+		summarizeBy: sum
+		sourceColumn: Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 2accb122-60d8-4250-a58a-a0e58b181fe4
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsHoliday
+		dataType: int64
+		formatString: 0
+		lineageTag: 180cb961-ca77-4bf7-a883-69960bd72834
+		summarizeBy: sum
+		sourceColumn: IsHoliday
+
+		annotation SummarizationSetBy = Automatic
+
+	column HolidayText
+		dataType: string
+		lineageTag: 37829a9c-8027-45a0-8b24-2458966f16ea
+		summarizeBy: none
+		sourceColumn: HolidayText
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Concat
+		dataType: string
+		lineageTag: 76385541-5d1b-41fe-aeb3-88abed7cca99
+		summarizeBy: none
+		sourceColumn: Date_Concat
+
+		annotation SummarizationSetBy = Automatic
+
+	partition VDim_Dates-5a3e74ea-00de-43d1-8c25-3275d6ca24c2 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("."),
+				    local = Source{[Name="local"]}[Data],
+				    dbo_VDim_Dates = local{[Schema="dbo",Item="VDim_Dates"]}[Data]
+				in
+				    dbo_VDim_Dates
+

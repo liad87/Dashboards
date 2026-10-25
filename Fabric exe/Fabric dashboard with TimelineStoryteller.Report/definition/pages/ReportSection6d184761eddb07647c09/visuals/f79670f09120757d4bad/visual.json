@@ -1,0 +1,77 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "f79670f09120757d4bad",
+  "position": {
+    "x": 25.422446406052963,
+    "y": 14.527112232030264,
+    "z": 2000,
+    "height": 138.91551071878939,
+    "width": 724.53972257250939
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Question 3 : Are there cases in which the same GR is used twice (or more) in the same job?",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "75cases (`~4%)  when GR has been allocated twice in the same job"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "There are 2,009 cases (Job + robot id) in 1,204 Jobs where the same robot been used more than once in the same job.\t"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "*96% of the cases are Lift robot."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

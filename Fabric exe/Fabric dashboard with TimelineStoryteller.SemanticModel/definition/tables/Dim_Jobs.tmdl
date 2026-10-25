@@ -1,0 +1,59 @@
+table Dim_Jobs
+	lineageTag: 0b5f09b6-2db3-4233-8c10-4cc578b8e231
+
+	column job_id
+		dataType: string
+		lineageTag: 7cc64aa8-16c5-4313-8f90-ff142c6c321f
+		summarizeBy: none
+		sourceColumn: job_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Job_created_Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: d8997d0b-219f-4809-9742-1065c86f66a7
+		summarizeBy: none
+		sourceColumn: Job_created_Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Job_Created
+		dataType: int64
+		formatString: 0
+		lineageTag: 9386b7d2-0cce-44fd-bde1-52963baeb2c9
+		summarizeBy: none
+		sourceColumn: Job_Created
+
+		annotation SummarizationSetBy = User
+
+	column Job_Ended
+		dataType: int64
+		formatString: 0
+		lineageTag: 26509c00-ff6f-49d6-ab8c-8d6bd2d91492
+		summarizeBy: none
+		sourceColumn: Job_Ended
+
+		annotation SummarizationSetBy = User
+
+	column Job_Duration
+		dataType: int64
+		formatString: 0
+		lineageTag: ff100bee-68f4-4ca5-9776-e644c72dfdf8
+		summarizeBy: none
+		sourceColumn: Job_Duration
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Jobs-3290ac7d-e6e6-4de4-a6b6-772d09c7ceb0 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("."),
+				    Fabric_Assignment = Source{[Name="Fabric_Assignment"]}[Data],
+				    dbo_Dim_Jobs = Fabric_Assignment{[Schema="dbo",Item="Dim_Jobs"]}[Data]
+				in
+				    dbo_Dim_Jobs
+

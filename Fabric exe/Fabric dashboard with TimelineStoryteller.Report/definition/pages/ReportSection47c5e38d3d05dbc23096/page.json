@@ -1,0 +1,25 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "ReportSection47c5e38d3d05dbc23096",
+  "displayName": "Day - Time",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "visualInteractions": [
+    {
+      "source": "3f672138bc6d015dd477",
+      "target": "d9ad04d1b1ad325c09e9",
+      "type": "DataFilter"
+    },
+    {
+      "source": "d9ad04d1b1ad325c09e9",
+      "target": "08c52e35cc22b75301dd",
+      "type": "DataFilter"
+    },
+    {
+      "source": "d9ad04d1b1ad325c09e9",
+      "target": "f71f5d538cd71d2d601b",
+      "type": "DataFilter"
+    }
+  ]
+}

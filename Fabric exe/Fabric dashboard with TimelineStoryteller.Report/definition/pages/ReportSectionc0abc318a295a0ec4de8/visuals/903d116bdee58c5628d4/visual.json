@@ -1,0 +1,152 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "903d116bdee58c5628d4",
+  "position": {
+    "x": 716.36822194199237,
+    "y": 530.23959646910464,
+    "z": 2000,
+    "height": 189.76040353089533,
+    "width": 554.75409836065569
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Allocations"
+                    }
+                  },
+                  "Property": "date_time"
+                }
+              },
+              "queryRef": "Fact_Allocations.date_time",
+              "nativeQueryRef": "date_time"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Allocations"
+                    }
+                  },
+                  "Property": "Allocation Time"
+                }
+              },
+              "queryRef": "Fact_Allocations.Allocation Time",
+              "nativeQueryRef": "Allocation Time"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Allocations"
+                    }
+                  },
+                  "Property": "robot_id"
+                }
+              },
+              "queryRef": "Fact_Allocations.robot_id",
+              "nativeQueryRef": "robot_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Allocations"
+                    }
+                  },
+                  "Property": "created"
+                }
+              },
+              "queryRef": "Fact_Allocations.created",
+              "nativeQueryRef": "created"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Allocations"
+                    }
+                  },
+                  "Property": "end_time"
+                }
+              },
+              "queryRef": "Fact_Allocations.end_time",
+              "nativeQueryRef": "end_time"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Allocations"
+                    }
+                  },
+                  "Property": "duration_sec"
+                }
+              },
+              "queryRef": "Fact_Allocations.duration_sec",
+              "nativeQueryRef": "duration_sec"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Allocations"
+                    }
+                  },
+                  "Property": "tote_id"
+                }
+              },
+              "queryRef": "Fact_Allocations.tote_id",
+              "nativeQueryRef": "tote_id"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_Allocations"
+                  }
+                },
+                "Property": "date_time"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

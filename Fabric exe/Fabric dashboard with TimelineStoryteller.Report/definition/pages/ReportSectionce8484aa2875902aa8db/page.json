@@ -1,0 +1,15 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "ReportSectionce8484aa2875902aa8db",
+  "displayName": "Q1 -Robots Distribution",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "visualInteractions": [
+    {
+      "source": "7dd7a051ec5740810c98",
+      "target": "e2fab6454a25bcc41de3",
+      "type": "DataFilter"
+    }
+  ]
+}

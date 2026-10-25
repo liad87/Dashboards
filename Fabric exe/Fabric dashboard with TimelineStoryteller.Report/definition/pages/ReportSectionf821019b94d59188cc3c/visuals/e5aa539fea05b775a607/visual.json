@@ -1,0 +1,221 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "e5aa539fea05b775a607",
+  "position": {
+    "x": 583.80832282471624,
+    "y": 349.55863808322823,
+    "z": 2000,
+    "height": 359.546027742749,
+    "width": 682.77427490542243
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Errors"
+                    }
+                  },
+                  "Property": "error_name"
+                }
+              },
+              "queryRef": "Fact_Errors.error_name",
+              "nativeQueryRef": "error_name",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Errors"
+                    }
+                  },
+                  "Property": "Total Errors"
+                }
+              },
+              "queryRef": "Fact_Errors.Total Errors",
+              "nativeQueryRef": "Total Errors"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Errors"
+                    }
+                  },
+                  "Property": "Errors Daily AVG"
+                }
+              },
+              "queryRef": "Fact_Errors.AVG Daily Errors",
+              "nativeQueryRef": "AVG Daily Errors"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_Errors"
+                        }
+                      },
+                      "Property": "has_related_job_id"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "CountNonNull(Fact_Errors.has_related_job_id)",
+              "nativeQueryRef": "Sum of has_related_job_id"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Errors"
+                    }
+                  },
+                  "Property": "AVG Duration Error"
+                }
+              },
+              "queryRef": "Fact_Errors.AVG Duration Error",
+              "nativeQueryRef": "AVG Duration Error"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fact_Errors"
+                  }
+                },
+                "Property": "Total Errors"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "titleAlignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Left'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "103.94577930221841D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "CountNonNull(Fact_Errors.has_related_job_id)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "54.92055520439176D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fact_Errors.Total Errors"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "81.93315775612325D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fact_Errors.AVG Duration Error"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "56.763795076171505D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fact_Errors.AVG Daily Errors"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

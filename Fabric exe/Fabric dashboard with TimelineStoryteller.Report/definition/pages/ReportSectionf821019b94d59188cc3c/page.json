@@ -1,0 +1,25 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "ReportSectionf821019b94d59188cc3c",
+  "displayName": "Errors Report",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "visualInteractions": [
+    {
+      "source": "e5aa539fea05b775a607",
+      "target": "cc8217424020a71d3623",
+      "type": "DataFilter"
+    },
+    {
+      "source": "664c2cb09e246d203d73",
+      "target": "cc8217424020a71d3623",
+      "type": "DataFilter"
+    },
+    {
+      "source": "43859578e5a0ee2d90ce",
+      "target": "cc8217424020a71d3623",
+      "type": "DataFilter"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "361a0067e5c1c0dd0d01",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 2000,
+    "height": 89.886506935687251,
+    "width": 756.31778058007558
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Q1 - What is the distribution of number of GRs and number of LRs allocated to jobs? ",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The shape of the distribution of robots per Job is similar when comparingLR VS GR, but the amount of extremes (>10) is greater in GR , also total use of GR allocation is greater in 1%-2%."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "*The most freq used (~33% of jobs) is the usage of 1 GR & 1 LR robot."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "*There are some cases where there is usage of zero GR Robots, how is it possiable ?"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
