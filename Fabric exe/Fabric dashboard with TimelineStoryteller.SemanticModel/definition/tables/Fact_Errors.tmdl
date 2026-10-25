@@ -18,6 +18,19 @@ table Fact_Errors
 		formatString: 0.0
 		lineageTag: c10e75ba-3beb-48ab-b7d7-43c6713610e6
 
+	/// Average allocation duration over the seven-day period ending on the selected date.
+	measure MCP_TEST =
+			CALCULATE(
+			    [AVG Allocations Duration],
+			    DATESINPERIOD(
+			        VDim_Dates[date],
+			        MAX(VDim_Dates[date]),
+			        -7,
+			        DAY
+			    )
+			)
+		lineageTag: f72a4329-60c6-4d20-81ea-97830bd3322e
+
 	column component_id
 		dataType: string
 		lineageTag: 17e59440-836b-4210-9372-a2361e3a3f14
