@@ -98,6 +98,77 @@ table Fact_Allocations
 		formatString: 0.0
 		lineageTag: 724ac511-e43a-4253-a84b-d75054aef077
 
+	/// Fixed numeric period length, in days, used by the Last X Days measures.
+	measure 'Compared Days' = 3
+		formatString: 0
+		displayFolder: Last X Days
+		lineageTag: ddad294e-4b14-41a0-9cf5-ffa9bbfea19d
+
+	measure 'Allocation Days - Last X Days' =
+			VAR EndDate = MAX(VDim_Dates[date])
+			RETURN
+			    CALCULATE(
+			        [Allocation Days],
+			        DATESINPERIOD(VDim_Dates[date], EndDate, -[Compared Days] + 1, DAY)
+			    )
+		formatString: 0
+		displayFolder: Last X Days
+		lineageTag: 5ca79d86-254c-4991-8d82-0505f37e7a02
+
+	measure 'Allocations Daily AVG - Last X Days' =
+			VAR EndDate = MAX(VDim_Dates[date])
+			RETURN
+			    CALCULATE(
+			        [Allocations Daily AVG],
+			        DATESINPERIOD(VDim_Dates[date], EndDate, -[Compared Days] + 1, DAY)
+			    )
+		displayFolder: Last X Days
+		lineageTag: c1734422-13f4-43dd-8f7d-99a4f8d999ea
+
+	measure 'Job Count Daily AVG - Last X Days' =
+			VAR EndDate = MAX(VDim_Dates[date])
+			RETURN
+			    CALCULATE(
+			        [Job Count Daily AVG],
+			        DATESINPERIOD(VDim_Dates[date], EndDate, -[Compared Days] + 1, DAY)
+			    )
+		formatString: 0.0
+		displayFolder: Last X Days
+		lineageTag: 4a2d1f8f-208c-466d-bc1c-20d1577923cf
+
+	measure 'Error Days - Last X Days' =
+			VAR EndDate = MAX(VDim_Dates[date])
+			RETURN
+			    CALCULATE(
+			        [Error Days],
+			        DATESINPERIOD(VDim_Dates[date], EndDate, -[Compared Days] + 1, DAY)
+			    )
+		formatString: 0
+		displayFolder: Last X Days
+		lineageTag: bdb38a7d-7ab8-41ef-a1a5-dfa5ca1e89f3
+
+	measure 'Errors Daily AVG - Last X Days' =
+			VAR EndDate = MAX(VDim_Dates[date])
+			RETURN
+			    CALCULATE(
+			        [Errors Daily AVG],
+			        DATESINPERIOD(VDim_Dates[date], EndDate, -[Compared Days] + 1, DAY)
+			    )
+		formatString: 0.0
+		displayFolder: Last X Days
+		lineageTag: 3d3282f0-d963-41b5-a8e5-b733a00a4de7
+
+	measure 'AVG Allocations Duration - Last X Days' =
+			VAR EndDate = MAX(VDim_Dates[date])
+			RETURN
+			    CALCULATE(
+			        [AVG Allocations Duration],
+			        DATESINPERIOD(VDim_Dates[date], EndDate, -[Compared Days] + 1, DAY)
+			    )
+		formatString: 0
+		displayFolder: Last X Days
+		lineageTag: 7157bf73-2728-4d95-993a-f7a9870c409f
+
 	column created
 		dataType: int64
 		formatString: 0
